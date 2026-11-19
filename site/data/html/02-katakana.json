@@ -1,0 +1,607 @@
+{
+  "id": "02-katakana",
+  "title": "カタカナ",
+  "subtitle": "カタカナ練習テキスト",
+  "pages": [
+    {
+      "pdfPage": 1,
+      "label": "表紙",
+      "title": "カタカナ",
+      "subtitle": "カタカナ練習テキスト",
+      "sections": [
+        {
+          "type": "kana_chart",
+          "heading": "カタカナ ごじゅうおん",
+          "headers": ["a", "i", "u", "e", "o"],
+          "rows": [
+            { "label": "ア行", "cells": [{ "c": "ア", "r": "a" }, { "c": "イ", "r": "i" }, { "c": "ウ", "r": "u" }, { "c": "エ", "r": "e" }, { "c": "オ", "r": "o" }] },
+            { "label": "カ行", "cells": [{ "c": "カ", "r": "ka" }, { "c": "キ", "r": "ki" }, { "c": "ク", "r": "ku" }, { "c": "ケ", "r": "ke" }, { "c": "コ", "r": "ko" }] },
+            { "label": "サ行", "cells": [{ "c": "サ", "r": "sa" }, { "c": "シ", "r": "shi" }, { "c": "ス", "r": "su" }, { "c": "セ", "r": "se" }, { "c": "ソ", "r": "so" }] },
+            { "label": "タ行", "cells": [{ "c": "タ", "r": "ta" }, { "c": "チ", "r": "chi" }, { "c": "ツ", "r": "tsu" }, { "c": "テ", "r": "te" }, { "c": "ト", "r": "to" }] },
+            { "label": "ナ行", "cells": [{ "c": "ナ", "r": "na" }, { "c": "ニ", "r": "ni" }, { "c": "ヌ", "r": "nu" }, { "c": "ネ", "r": "ne" }, { "c": "ノ", "r": "no" }] },
+            { "label": "ハ行", "cells": [{ "c": "ハ", "r": "ha" }, { "c": "ヒ", "r": "hi" }, { "c": "フ", "r": "fu" }, { "c": "ヘ", "r": "he" }, { "c": "ホ", "r": "ho" }] },
+            { "label": "マ行", "cells": [{ "c": "マ", "r": "ma" }, { "c": "ミ", "r": "mi" }, { "c": "ム", "r": "mu" }, { "c": "メ", "r": "me" }, { "c": "モ", "r": "mo" }] },
+            { "label": "ヤ行", "cells": [{ "c": "ヤ", "r": "ya" }, null, { "c": "ユ", "r": "yu" }, null, { "c": "ヨ", "r": "yo" }] },
+            { "label": "ラ行", "cells": [{ "c": "ラ", "r": "ra" }, { "c": "リ", "r": "ri" }, { "c": "ル", "r": "ru" }, { "c": "レ", "r": "re" }, { "c": "ロ", "r": "ro" }] },
+            { "label": "ワ行", "cells": [{ "c": "ワ", "r": "wa" }, null, null, null, { "c": "ヲ", "r": "o" }] },
+            { "label": "ン", "cells": [{ "c": "ン", "r": "n" }, null, null, null, null] }
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 2,
+      "label": "p.1",
+      "title": "ひらがな と カタカナ",
+      "subtitle": "ひらがなとカタカナをくらべてみましょう",
+      "sections": [
+        {
+          "type": "table",
+          "heading": "ひらがな・カタカナ たいしょうひょう（タップで音声）",
+          "headers": ["ひらがな", "カタカナ"],
+          "rows": [
+            ["あ　い　う　え　お", "ア　イ　ウ　エ　オ"],
+            ["か　き　く　け　こ", "カ　キ　ク　ケ　コ"],
+            ["さ　し　す　せ　そ", "サ　シ　ス　セ　ソ"],
+            ["た　ち　つ　て　と", "タ　チ　ツ　テ　ト"],
+            ["な　に　ぬ　ね　の", "ナ　ニ　ヌ　ネ　ノ"],
+            ["は　ひ　ふ　へ　ほ", "ハ　ヒ　フ　ヘ　ホ"],
+            ["ま　み　む　め　も", "マ　ミ　ム　メ　モ"],
+            ["や　　　ゆ　　　よ", "ヤ　　　ユ　　　ヨ"],
+            ["ら　り　る　れ　ろ", "ラ　リ　ル　レ　ロ"],
+            ["わ　　　　　　　を", "ワ　　　　　　　ヲ"],
+            ["ん", "ン"]
+          ]
+        },
+        {
+          "type": "text",
+          "style": "note",
+          "heading": "※ ひらがなとカタカナをくらべてください。",
+          "paragraphs": [
+            "［へ］［り］は よくにています。また ［か］［き］も にています。",
+            "ひとつのことばをかくときりょうほうをまぜてつかうことはありません。（れいがい） あんパン　けしゴム　など"
+          ]
+        },
+        {
+          "type": "pairs",
+          "heading": "よくにている ひらがなとカタカナ",
+          "pairs": [
+            ["へ", "ヘ"],
+            ["り", "リ"],
+            ["か", "カ"],
+            ["き", "キ"]
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 3,
+      "label": "p.2",
+      "title": "ア行・カ行",
+      "subtitle": "ア イ ウ エ オ ・ カ キ ク ケ コ",
+      "sections": [
+        {
+          "type": "kana_practice",
+          "heading": "ア行（ア・イ・ウ・エ・オ）",
+          "chars": [
+            { "c": "ア", "r": "a", "yoon": false },
+            { "c": "イ", "r": "i", "yoon": false },
+            { "c": "ウ", "r": "u", "yoon": false },
+            { "c": "エ", "r": "e", "yoon": false },
+            { "c": "オ", "r": "o", "yoon": false }
+          ]
+        },
+        {
+          "type": "kana_practice",
+          "heading": "カ行（カ・キ・ク・ケ・コ）",
+          "chars": [
+            { "c": "カ", "r": "ka", "yoon": false },
+            { "c": "キ", "r": "ki", "yoon": false },
+            { "c": "ク", "r": "ku", "yoon": false },
+            { "c": "ケ", "r": "ke", "yoon": false },
+            { "c": "コ", "r": "ko", "yoon": false }
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 4,
+      "label": "p.3",
+      "title": "サ行・タ行",
+      "subtitle": "サ シ ス セ ソ ・ タ チ ツ テ ト",
+      "sections": [
+        {
+          "type": "kana_practice",
+          "heading": "サ行（サ・シ・ス・セ・ソ）",
+          "chars": [
+            { "c": "サ", "r": "sa", "yoon": false },
+            { "c": "シ", "r": "shi", "yoon": false },
+            { "c": "ス", "r": "su", "yoon": false },
+            { "c": "セ", "r": "se", "yoon": false },
+            { "c": "ソ", "r": "so", "yoon": false }
+          ]
+        },
+        {
+          "type": "kana_practice",
+          "heading": "タ行（タ・チ・ツ・テ・ト）",
+          "chars": [
+            { "c": "タ", "r": "ta", "yoon": false },
+            { "c": "チ", "r": "chi", "yoon": false },
+            { "c": "ツ", "r": "tsu", "yoon": false },
+            { "c": "テ", "r": "te", "yoon": false },
+            { "c": "ト", "r": "to", "yoon": false }
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 5,
+      "label": "p.4",
+      "title": "ナ行・ハ行",
+      "subtitle": "ナ ニ ヌ ネ ノ ・ ハ ヒ フ ヘ ホ",
+      "sections": [
+        {
+          "type": "kana_practice",
+          "heading": "ナ行（ナ・ニ・ヌ・ネ・ノ）",
+          "chars": [
+            { "c": "ナ", "r": "na", "yoon": false },
+            { "c": "ニ", "r": "ni", "yoon": false },
+            { "c": "ヌ", "r": "nu", "yoon": false },
+            { "c": "ネ", "r": "ne", "yoon": false },
+            { "c": "ノ", "r": "no", "yoon": false }
+          ]
+        },
+        {
+          "type": "kana_practice",
+          "heading": "ハ行（ハ・ヒ・フ・ヘ・ホ）",
+          "chars": [
+            { "c": "ハ", "r": "ha", "yoon": false },
+            { "c": "ヒ", "r": "hi", "yoon": false },
+            { "c": "フ", "r": "fu", "yoon": false },
+            { "c": "ヘ", "r": "he", "yoon": false },
+            { "c": "ホ", "r": "ho", "yoon": false }
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 6,
+      "label": "p.5",
+      "title": "マ行・ヤ行／かきかたのちがい",
+      "subtitle": "マ ミ ム メ モ ・ ヤ ユ ヨ",
+      "sections": [
+        {
+          "type": "kana_practice",
+          "heading": "マ行（マ・ミ・ム・メ・モ）",
+          "chars": [
+            { "c": "マ", "r": "ma", "yoon": false },
+            { "c": "ミ", "r": "mi", "yoon": false },
+            { "c": "ム", "r": "mu", "yoon": false },
+            { "c": "メ", "r": "me", "yoon": false },
+            { "c": "モ", "r": "mo", "yoon": false }
+          ]
+        },
+        {
+          "type": "kana_practice",
+          "heading": "ヤ行（ヤ・ユ・ヨ）",
+          "chars": [
+            { "c": "ヤ", "r": "ya", "yoon": false },
+            { "c": "ユ", "r": "yu", "yoon": false },
+            { "c": "ヨ", "r": "yo", "yoon": false }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "ひらがなとカタカナの かきかたのちがい",
+          "paragraphs": [
+            "1) カタカナでかくことば：がいこくごから にほんごに なったことばや がいこくじんの なまえを かくときに つかう。"
+          ],
+          "bullets": [
+            "○ カメラ　　× かめら",
+            "○ テレビ　　× てれび",
+            "○ プラスチック　　× ぷらすちっく",
+            "○ ビル・クリントン　　× びる・くりんとん"
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "2) のばすおとをあらわすときは「ー」をつかう。",
+          "paragraphs": [
+            "「ア・イ・ウ・エ・オ」はつかわない。"
+          ],
+          "bullets": [
+            "○ サービス　　× サアビス",
+            "○ ビール　　× ビイル",
+            "○ レコード　　× レコウド　× レコオド",
+            "○ ケーキ　　× ケエキ"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 7,
+      "label": "p.6",
+      "title": "ラ行・ワ行・ン／たてがきとよこがき",
+      "subtitle": "ラ リ ル レ ロ ・ ワ ヲ ン",
+      "sections": [
+        {
+          "type": "kana_practice",
+          "heading": "ラ行（ラ・リ・ル・レ・ロ）",
+          "chars": [
+            { "c": "ラ", "r": "ra", "yoon": false },
+            { "c": "リ", "r": "ri", "yoon": false },
+            { "c": "ル", "r": "ru", "yoon": false },
+            { "c": "レ", "r": "re", "yoon": false },
+            { "c": "ロ", "r": "ro", "yoon": false }
+          ]
+        },
+        {
+          "type": "kana_practice",
+          "heading": "ワ行・ン（ワ・ヲ・ン）",
+          "chars": [
+            { "c": "ワ", "r": "wa", "yoon": false },
+            { "c": "ヲ", "r": "o", "yoon": false },
+            { "c": "ン", "r": "n", "yoon": false }
+          ]
+        },
+        {
+          "type": "text",
+          "style": "note",
+          "heading": "たてがき と よこがき",
+          "paragraphs": [
+            "のばすおと「ー」は、よこがきのときは横棒、たてがきのときは縦棒でかきます。",
+            "ちいさい「ュ」「ッ」のかく位置も、よこがきとたてがきでちがいます。"
+          ],
+          "bullets": [
+            "コーヒー（よこがき：○ コーヒー ／ × コ｜ヒ｜）",
+            "チューリップ（よこがき・たてがきでの小さい文字の位置にちゅうい）"
+          ]
+        },
+        {
+          "type": "image_ref",
+          "heading": "たてがきとよこがきのれい（原本）",
+          "caption": "コーヒー・チューリップのたてがきとよこがき",
+          "pdfPage": 7
+        }
+      ]
+    },
+    {
+      "pdfPage": 8,
+      "label": "p.7",
+      "title": "れんしゅう 1",
+      "subtitle": "ことばを よんで かいてみましょう",
+      "sections": [
+        {
+          "type": "vocab_practice",
+          "heading": "れんしゅう 1（10のことば）",
+          "words": [
+            { "icon": "🍦", "w": "ソフトクリーム", "r": "sofutokuriimu", "mean": "soft serve ice cream" },
+            { "icon": "📷", "w": "カメラ", "r": "kamera", "mean": "camera" },
+            { "icon": "🧳", "w": "スーツケース", "r": "suutsukeesu", "mean": "suitcase" },
+            { "icon": "🚕", "w": "タクシー", "r": "takushii", "mean": "taxi" },
+            { "icon": "🚚", "w": "トラック", "r": "torakku", "mean": "truck" },
+            { "icon": "🎾", "w": "テニス", "r": "tenisu", "mean": "tennis" },
+            { "icon": "⚽", "w": "サッカー", "r": "sakkaa", "mean": "soccer" },
+            { "icon": "⛷️", "w": "スキー", "r": "sukii", "mean": "skiing" },
+            { "icon": "🍽️", "w": "レストラン", "r": "resutoran", "mean": "restaurant" },
+            { "icon": "🎅", "w": "サンタクロース", "r": "santakuroosu", "mean": "Santa Claus" }
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 9,
+      "label": "p.8",
+      "title": "だくおん・はんだくおん（1）",
+      "subtitle": "ガ行・ザ行・ダ行・バ行・パ行（パ・ピ）",
+      "sections": [
+        {
+          "type": "kana_practice",
+          "heading": "ガ行（ガ・ギ・グ・ゲ・ゴ）",
+          "chars": [
+            { "c": "ガ", "r": "ga", "yoon": false },
+            { "c": "ギ", "r": "gi", "yoon": false },
+            { "c": "グ", "r": "gu", "yoon": false },
+            { "c": "ゲ", "r": "ge", "yoon": false },
+            { "c": "ゴ", "r": "go", "yoon": false }
+          ]
+        },
+        {
+          "type": "kana_practice",
+          "heading": "ザ行（ザ・ジ・ズ・ゼ・ゾ）",
+          "chars": [
+            { "c": "ザ", "r": "za", "yoon": false },
+            { "c": "ジ", "r": "ji", "yoon": false },
+            { "c": "ズ", "r": "zu", "yoon": false },
+            { "c": "ゼ", "r": "ze", "yoon": false },
+            { "c": "ゾ", "r": "zo", "yoon": false }
+          ]
+        },
+        {
+          "type": "kana_practice",
+          "heading": "ダ行（ダ・ヂ・ヅ・デ・ド）",
+          "chars": [
+            { "c": "ダ", "r": "da", "yoon": false },
+            { "c": "ヂ", "r": "ji", "yoon": false },
+            { "c": "ヅ", "r": "zu", "yoon": false },
+            { "c": "デ", "r": "de", "yoon": false },
+            { "c": "ド", "r": "do", "yoon": false }
+          ]
+        },
+        {
+          "type": "kana_practice",
+          "heading": "バ行（バ・ビ・ブ・ベ・ボ）",
+          "chars": [
+            { "c": "バ", "r": "ba", "yoon": false },
+            { "c": "ビ", "r": "bi", "yoon": false },
+            { "c": "ブ", "r": "bu", "yoon": false },
+            { "c": "ベ", "r": "be", "yoon": false },
+            { "c": "ボ", "r": "bo", "yoon": false }
+          ]
+        },
+        {
+          "type": "kana_practice",
+          "heading": "パ行（1）（パ・ピ）",
+          "chars": [
+            { "c": "パ", "r": "pa", "yoon": false },
+            { "c": "ピ", "r": "pi", "yoon": false }
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 10,
+      "label": "p.9",
+      "title": "はんだくおん（2）・れんしゅう 2",
+      "subtitle": "プ・ペ・ポ と ことばのれんしゅう",
+      "sections": [
+        {
+          "type": "kana_practice",
+          "heading": "パ行（2）（プ・ペ・ポ）",
+          "chars": [
+            { "c": "プ", "r": "pu", "yoon": false },
+            { "c": "ペ", "r": "pe", "yoon": false },
+            { "c": "ポ", "r": "po", "yoon": false }
+          ]
+        },
+        {
+          "type": "vocab_practice",
+          "heading": "れんしゅう 2（16のことば）",
+          "words": [
+            { "icon": "🍌", "w": "バナナ", "r": "banana", "mean": "banana" },
+            { "icon": "🍊", "w": "オレンジ", "r": "orenji", "mean": "orange" },
+            { "icon": "🍍", "w": "パイナップル", "r": "painappuru", "mean": "pineapple" },
+            { "icon": "📻", "w": "ラジカセ", "r": "rajikase", "mean": "radio-cassette player" },
+            { "icon": "📺", "w": "テレビ", "r": "terebi", "mean": "TV" },
+            { "icon": "📼", "w": "ビデオテープ", "r": "bideoteepu", "mean": "videotape" },
+            { "icon": "📮", "w": "ポスト", "r": "posuto", "mean": "mailbox / postbox" },
+            { "icon": "🏪", "w": "コンビニ", "r": "konbini", "mean": "convenience store" },
+            { "icon": "🏢", "w": "アパート", "r": "apaato", "mean": "apartment" },
+            { "icon": "⛽", "w": "ガソリンスタンド", "r": "gasorinsutando", "mean": "gas station" },
+            { "icon": "🅿️", "w": "パーキング", "r": "paakingu", "mean": "parking" },
+            { "icon": "🏍️", "w": "バイク", "r": "baiku", "mean": "motorcycle" },
+            { "icon": "🚌", "w": "バス", "r": "basu", "mean": "bus" },
+            { "icon": "📏", "w": "キロメートル", "r": "kiromeetoru", "mean": "kilometer (km)" },
+            { "icon": "⚖️", "w": "グラム", "r": "guramu", "mean": "gram (g)" },
+            { "icon": "🐧", "w": "ペンギン", "r": "pengin", "mean": "penguin" }
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 11,
+      "label": "p.10",
+      "title": "ようおん（1）・にているじ（1）",
+      "subtitle": "キャ・シャ・ギャ・ジャ行 と［シ］⇔［ツ］",
+      "sections": [
+        {
+          "type": "kana_practice",
+          "heading": "キャ・シャ・ギャ・ジャ行",
+          "chars": [
+            { "c": "キャ", "r": "kya", "yoon": true },
+            { "c": "キュ", "r": "kyu", "yoon": true },
+            { "c": "キョ", "r": "kyo", "yoon": true },
+            { "c": "シャ", "r": "sha", "yoon": true },
+            { "c": "シュ", "r": "shu", "yoon": true },
+            { "c": "ショ", "r": "sho", "yoon": true },
+            { "c": "ギャ", "r": "gya", "yoon": true },
+            { "c": "ギュ", "r": "gyu", "yoon": true },
+            { "c": "ギョ", "r": "gyo", "yoon": true },
+            { "c": "ジャ", "r": "ja", "yoon": true },
+            { "c": "ジュ", "r": "ju", "yoon": true },
+            { "c": "ジョ", "r": "jo", "yoon": true }
+          ]
+        },
+        {
+          "type": "text",
+          "style": "note",
+          "heading": "にているじ (1) ［シ］⇔［ツ］",
+          "paragraphs": [
+            "かきじゅんに きをつけて かきましょう。おおきさと いちにも ちゅういして。"
+          ]
+        },
+        {
+          "type": "pairs",
+          "heading": "くらべてみましょう",
+          "pairs": [
+            ["シ", "ツ"]
+          ]
+        },
+        {
+          "type": "vocab_practice",
+          "heading": "れんしゅうのことば",
+          "words": [
+            { "icon": "👔", "w": "シャツ", "r": "shatsu", "mean": "shirt" },
+            { "icon": "🛍️", "w": "ショッピング", "r": "shoppingu", "mean": "shopping" }
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 12,
+      "label": "p.11",
+      "title": "ようおん（2）・にているじ（2）",
+      "subtitle": "チャ・ニャ・ヂャ・ヒャ行 と［ソ］⇔［リ］",
+      "sections": [
+        {
+          "type": "kana_practice",
+          "heading": "チャ・ニャ・ヂャ・ヒャ行",
+          "chars": [
+            { "c": "チャ", "r": "cha", "yoon": true },
+            { "c": "チュ", "r": "chu", "yoon": true },
+            { "c": "チョ", "r": "cho", "yoon": true },
+            { "c": "ニャ", "r": "nya", "yoon": true },
+            { "c": "ニュ", "r": "nyu", "yoon": true },
+            { "c": "ニョ", "r": "nyo", "yoon": true },
+            { "c": "ヂャ", "r": "ja", "yoon": true },
+            { "c": "ヂュ", "r": "ju", "yoon": true },
+            { "c": "ヂョ", "r": "jo", "yoon": true },
+            { "c": "ヒャ", "r": "hya", "yoon": true },
+            { "c": "ヒュ", "r": "hyu", "yoon": true },
+            { "c": "ヒョ", "r": "hyo", "yoon": true }
+          ]
+        },
+        {
+          "type": "text",
+          "style": "note",
+          "heading": "にているじ (2) ［ソ］⇔［リ］",
+          "paragraphs": [
+            "かきじゅんに きをつけて かきましょう。せんの ほうこうに ちゅういして。"
+          ]
+        },
+        {
+          "type": "pairs",
+          "heading": "くらべてみましょう",
+          "pairs": [
+            ["ソ", "リ"]
+          ]
+        },
+        {
+          "type": "vocab_practice",
+          "heading": "れんしゅうのことば",
+          "words": [
+            { "icon": "🛷", "w": "ソリ", "r": "sori", "mean": "sled" },
+            { "icon": "⛽", "w": "ガソリン", "r": "gasorin", "mean": "gasoline" },
+            { "icon": "👯", "w": "ソックリ", "r": "sokkuri", "mean": "just alike" }
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 13,
+      "label": "p.12",
+      "title": "ようおん（3）・にているじ（3）",
+      "subtitle": "ビャ・ミャ・ピャ・リャ行 と［ソ］⇔［ン］",
+      "sections": [
+        {
+          "type": "kana_practice",
+          "heading": "ビャ・ミャ・ピャ・リャ行",
+          "chars": [
+            { "c": "ビャ", "r": "bya", "yoon": true },
+            { "c": "ビュ", "r": "byu", "yoon": true },
+            { "c": "ビョ", "r": "byo", "yoon": true },
+            { "c": "ミャ", "r": "mya", "yoon": true },
+            { "c": "ミュ", "r": "myu", "yoon": true },
+            { "c": "ミョ", "r": "myo", "yoon": true },
+            { "c": "ピャ", "r": "pya", "yoon": true },
+            { "c": "ピュ", "r": "pyu", "yoon": true },
+            { "c": "ピョ", "r": "pyo", "yoon": true },
+            { "c": "リャ", "r": "rya", "yoon": true },
+            { "c": "リュ", "r": "ryu", "yoon": true },
+            { "c": "リョ", "r": "ryo", "yoon": true }
+          ]
+        },
+        {
+          "type": "text",
+          "style": "note",
+          "heading": "にているじ (3) ［ソ］⇔［ン］",
+          "paragraphs": [
+            "かきじゅんに きをつけて かきましょう。おおきさと いちにも ちゅういして。"
+          ]
+        },
+        {
+          "type": "pairs",
+          "heading": "くらべてみましょう",
+          "pairs": [
+            ["ソ", "ン"]
+          ]
+        },
+        {
+          "type": "vocab_practice",
+          "heading": "れんしゅうのことば",
+          "words": [
+            { "icon": "🎵", "w": "ソング", "r": "songu", "mean": "song" },
+            { "icon": "🥤", "w": "ソフトドリンク", "r": "sofutodorinku", "mean": "soft drink" }
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 14,
+      "label": "p.13",
+      "title": "とくしゅなおと（1）・れんしゅう 3",
+      "subtitle": "シェ・チェ・ティ と ことばのれんしゅう",
+      "sections": [
+        {
+          "type": "kana_practice",
+          "heading": "シェ・チェ・ティ",
+          "chars": [
+            { "c": "シェ", "r": "she", "yoon": true },
+            { "c": "チェ", "r": "che", "yoon": true },
+            { "c": "ティ", "r": "ti", "yoon": true }
+          ]
+        },
+        {
+          "type": "vocab_practice",
+          "heading": "れんしゅう 3（10のことば）",
+          "words": [
+            { "icon": "🏢", "w": "マンション", "r": "manshon", "mean": "condominium / apartment building" },
+            { "icon": "💳", "w": "キャッシュカード", "r": "kyasshukaado", "mean": "cash card / ATM card" },
+            { "icon": "💻", "w": "パーソナルコンピューター", "r": "paasonarukonpyuutaa", "mean": "personal computer" },
+            { "icon": "✈️", "w": "ジャンボジェット", "r": "janbojetto", "mean": "jumbo jet" },
+            { "icon": "🗿", "w": "スフィンクス", "r": "sufinkusu", "mean": "Sphinx" },
+            { "icon": "🗼", "w": "エッフェルとう", "r": "efferutou", "mean": "Eiffel Tower" },
+            { "icon": "👰", "w": "ウェディングドレス", "r": "wedingudoresu", "mean": "wedding dress" },
+            { "icon": "🫖", "w": "ミルクティー", "r": "mirukutii", "mean": "milk tea" },
+            { "icon": "🛋️", "w": "クッション", "r": "kusshon", "mean": "cushion" },
+            { "icon": "💿", "w": "コマーシャルソング", "r": "komaasharusongu", "mean": "commercial song" }
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 15,
+      "label": "p.14",
+      "title": "とくしゅなおと（2）",
+      "subtitle": "がいらいごで つかう とくしゅな かたかな",
+      "sections": [
+        {
+          "type": "kana_practice",
+          "heading": "ツァ・ツェ・ツォ・ファ・フィ・フェ・フォ",
+          "chars": [
+            { "c": "ツァ", "r": "tsa", "yoon": true },
+            { "c": "ツェ", "r": "tse", "yoon": true },
+            { "c": "ツォ", "r": "tso", "yoon": true },
+            { "c": "ファ", "r": "fa", "yoon": true },
+            { "c": "フィ", "r": "fi", "yoon": true },
+            { "c": "フェ", "r": "fe", "yoon": true },
+            { "c": "フォ", "r": "fo", "yoon": true }
+          ]
+        },
+        {
+          "type": "kana_practice",
+          "heading": "ジェ・ディ・デュ・ウェ・ウォ・トゥ・ドゥ",
+          "chars": [
+            { "c": "ジェ", "r": "je", "yoon": true },
+            { "c": "ディ", "r": "di", "yoon": true },
+            { "c": "デュ", "r": "dyu", "yoon": true },
+            { "c": "ウェ", "r": "we", "yoon": true },
+            { "c": "ウォ", "r": "wo", "yoon": true },
+            { "c": "トゥ", "r": "tu", "yoon": true },
+            { "c": "ドゥ", "r": "du", "yoon": true }
+          ]
+        }
+      ]
+    }
+  ]
+}

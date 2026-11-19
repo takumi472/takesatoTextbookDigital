@@ -1,0 +1,39 @@
+substitutions:
+  _REGION: asia-northeast1
+  _REPO: my-app-repo
+  _IMAGE_NAME: takesato-textbook-digital
+  _SERVICE_NAME: takesato-textbook-digital-service
+  _TAG: latest
+
+steps:
+  # 1. Docker イメージのビルド ($PROJECT_ID は Cloud Build が自動注入)
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE_NAME}:${_TAG}'
+      - '.'
+
+  # 2. Artifact Registry へプッシュ
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE_NAME}:${_TAG}'
+
+  # 3. Cloud Run へデプロイ
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - '${_SERVICE_NAME}'
+      - '--image=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE_NAME}:${_TAG}'
+      - '--region=${_REGION}'
+      - '--platform=managed'
+      - '--allow-unauthenticated'
+
+images:
+  - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE_NAME}:${_TAG}'
+
+options:
+  logging: CLOUD_LOGGING_ONLY

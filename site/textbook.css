@@ -1,0 +1,417 @@
+/* =====================================================
+   Unified Digital Textbook Engine Stylesheet Extensions
+   ===================================================== */
+
+body.hide-ruby rt {
+  visibility: hidden;
+}
+
+ruby {
+  ruby-position: over;
+}
+
+rt {
+  font-size: 0.56em;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.tb-section {
+  margin-bottom: 26px;
+}
+
+.tb-section:last-child {
+  margin-bottom: 0;
+}
+
+.tb-sec-heading {
+  margin: 0 0 12px;
+  font-family: var(--font-round);
+  font-size: 18px;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ==================== KANJI CARDS ==================== */
+.kanji-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.kanji-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-warm);
+  overflow: hidden;
+}
+
+.kanji-top {
+  display: flex;
+  gap: 16px;
+  padding: 14px 16px;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.kanji-char-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 104px;
+}
+
+.kanji-big-btn {
+  width: 84px;
+  height: 84px;
+  border-radius: 14px;
+  border: 2px solid var(--primary-soft);
+  background: var(--primary-soft);
+  font-family: var(--font-kyokasho);
+  font-size: 52px;
+  color: var(--primary);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.kanji-big-btn:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: scale(1.04);
+}
+
+.kanji-badges {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.kanji-badge {
+  font-size: 11px;
+  font-weight: 700;
+  background: #f1f5f9;
+  color: #475569;
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+
+.kanji-info {
+  flex: 1;
+  min-width: 220px;
+}
+
+.kanji-readings {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  font-size: 13.5px;
+}
+
+.reading-pill {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 4px 10px;
+}
+
+.reading-pill strong {
+  color: var(--primary);
+  margin-right: 4px;
+}
+
+.kanji-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.kanji-word-chip {
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 9px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  transition: all 0.14s ease;
+}
+
+.kanji-word-chip:hover {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.kw-kanji {
+  font-family: var(--font-kyokasho);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.kw-read {
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+/* ==================== DIALOGUE (KAIWA) ==================== */
+.dialogue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dialogue-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--surface-warm);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+.speaker-badge {
+  min-width: 44px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.dialogue-text {
+  flex: 1;
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+.dialogue-romaji {
+  display: block;
+  font-size: 12.5px;
+  color: var(--ink-muted);
+  margin-top: 2px;
+}
+
+.goal-box {
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-left: 4px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0 10px 10px 0;
+  font-size: 13.5px;
+}
+
+/* ==================== READING (YOMIMONO) ==================== */
+.reading-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.reading-para {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--surface-warm);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.reading-para p {
+  margin: 0;
+  flex: 1;
+  font-size: 18px;
+  line-height: 2.05;
+}
+
+.glossary-box {
+  margin-top: 14px;
+  padding: 14px 16px;
+  background: #f8fafc;
+  border: 1px solid #dbe5ee;
+  border-radius: 12px;
+}
+
+.glossary-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* ==================== TABLES & IMAGES ==================== */
+.tb-table-wrap {
+  overflow-x: auto;
+}
+
+.tb-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  background: #fff;
+}
+
+.tb-table th, .tb-table td {
+  border: 1px solid var(--border);
+  padding: 9px 12px;
+  text-align: left;
+}
+
+.tb-table th {
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.tb-table tr:nth-child(even) td {
+  background: #fcfbf8;
+}
+
+.speak-cell-btn {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 6px;
+  text-align: left;
+}
+
+.speak-cell-btn:hover {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.inline-ref-img {
+  text-align: center;
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.inline-ref-img img {
+  max-width: 100%;
+  max-height: 540px;
+  border-radius: 6px;
+  box-shadow: var(--shadow-sm);
+}
+
+.inline-ref-caption {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+
+/* ==================== FILL PRACTICE ==================== */
+.fill-practice-box {
+  background: #f5f9fc;
+  border-color: #c7dceb;
+}
+
+.fill-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.fill-line {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 16.5px;
+  flex: 1;
+}
+
+.fill-input {
+  font-family: var(--font-kyokasho);
+  font-size: 17px;
+  padding: 5px 10px;
+  border: 1.5px dashed #94a3b8;
+  border-radius: 8px;
+  background: #fcfbf8;
+  min-width: 130px;
+}
+
+.fill-input:focus {
+  border-style: solid;
+  border-color: var(--primary);
+  background: #fff;
+  outline: none;
+}
+
+/* ==================== MOBILE PORTRAIT & LANDSCAPE ==================== */
+@media (max-width: 640px) {
+  .kanji-top {
+    gap: 12px;
+    padding: 12px;
+  }
+  .kanji-char-box {
+    min-width: 78px;
+  }
+  .kanji-big-btn {
+    width: 68px;
+    height: 68px;
+    font-size: 42px;
+  }
+  .kanji-info {
+    min-width: 0;
+  }
+  .dialogue-line, .reading-para {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  .dialogue-text, .reading-para p {
+    font-size: 16px;
+    line-height: 1.85;
+  }
+  .fill-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .fill-input {
+    width: 100%;
+    min-width: 0;
+  }
+  .tb-table {
+    font-size: 13px;
+  }
+  .tb-table th, .tb-table td {
+    padding: 7px 8px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 520px) {
+  .inline-ref-img img {
+    max-height: 68dvh;
+  }
+  .dialogue-text, .reading-para p {
+    font-size: 16px;
+  }
+}

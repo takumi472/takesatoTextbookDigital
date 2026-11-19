@@ -1,0 +1,35 @@
+# Secrets, credentials & environment files
+.env
+.env.*
+secrets/
+.secrets/
+*secret*
+*credential*
+service-account*.json
+gcp-key*.json
+client_secret*.json
+token.json
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Source PDFs & build scripts (not needed for Cloud Build)
+source_pdfs/
+scripts/
+node_modules/
+gyoza/
+
+# Git & Config
+.gcloudignore
+.git
+.gitignore
+.github
+
+# Python & OS metadata
+__pycache__/
+*.py[cod]
+.DS_Store
+.AppleDouble
+.LSOverride
+._*

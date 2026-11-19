@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>ひらがな（HTMLインタラクティブ版）| 春日部日本語教室</title>
+  <meta name="description" content="春日部日本語教室「ひらがな」テキスト全19ページのHTMLインタラクティブ版。音声再生・なぞり書き練習・語彙テスト・数字＆日付クイズ対応。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="hiragana.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <div class="top-left">
+      <button id="toc-toggle-btn" class="icon-btn mobile-only" type="button" aria-label="目次を開く">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="./" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 18 9 12 15 6"/></svg>
+        本棚へ
+      </a>
+      <h1 class="top-title">ひらがな</h1>
+    </div>
+    <div class="top-actions">
+      <button id="toggle-speed-btn" class="action-pill active" type="button" title="音声の速さを切り替えます">音声：ゆっくり</button>
+      <button id="toggle-romaji-btn" class="action-pill active" type="button" title="ローマ字表示のオン・オフ">ローマ字 ON</button>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    <!-- Sidebar TOC -->
+    <aside id="toc-sidebar" class="toc-sidebar" aria-label="目次">
+      <div class="toc-header">
+        <span>もくじ（全19ページ）</span>
+        <button id="toc-close-btn" class="icon-btn mobile-only" type="button" aria-label="閉じる">✕</button>
+      </div>
+      <nav id="toc-list" class="toc-list"></nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="page-main">
+      <div id="page-container" class="page-container"></div>
+
+      <!-- Page Footer Navigation -->
+      <nav class="page-nav-footer" aria-label="ページ移動">
+        <button id="prev-sec-btn" class="nav-btn" type="button">← 前のページ</button>
+        <span id="page-indicator" class="page-indicator">表紙 (1 / 19)</span>
+        <button id="next-sec-btn" class="nav-btn primary" type="button">次のページ →</button>
+      </nav>
+    </main>
+  </div>
+
+  <script src="writing-pad.js"></script>
+  <script src="hiragana.js"></script>
+</body>
+</html>

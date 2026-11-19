@@ -1,0 +1,36 @@
+# Secrets, credentials & environment files (NEVER commit)
+.env
+.env.*
+!.env.example
+secrets/
+.secrets/
+*secret*
+*credential*
+service-account*.json
+gcp-key*.json
+client_secret*.json
+token.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+
+# Raw source PDFs (large binaries; site/ has everything needed to run)
+source_pdfs/
+
+# Node & local tools
+node_modules/
+gyoza/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
