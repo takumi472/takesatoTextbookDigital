@@ -570,24 +570,30 @@ function renderKanaPage(page) {
   `;
 
   const list = document.getElementById("kana-list");
-  const padItems = page.chars.map((it) => ({
-    char: it.c,
-    sub: `よみ：${it.r}`,
-    extra: memos[it.c] ? `メモ：${memos[it.c]}` : "指やペンで大きく書いて練習しましょう",
-    speak: it.c,
-    isYoon: Boolean(it.yoon || it.c.length > 1),
-  }));
+  const padItems = page.chars.map((it) => {
+    const st = window.getExpectedStrokes ? window.getExpectedStrokes(it.c) : null;
+    return {
+      char: it.c,
+      strokes: st,
+      sub: `よみ：${it.r}${st ? ` ／ ${st}画` : ""}`,
+      extra: memos[it.c] ? `メモ：${memos[it.c]}` : "書き順（1・2・3…）を意識して書いてみましょう",
+      speak: it.c,
+      isYoon: Boolean(it.yoon || it.c.length > 1),
+    };
+  });
 
   page.chars.forEach((item, charIdx) => {
     const card = document.createElement("div");
     card.className = "kana-card";
     const yClass = item.yoon ? " yoon" : "";
+    const stCount = window.getExpectedStrokes ? window.getExpectedStrokes(item.c) : null;
     card.innerHTML = `
       <div class="kana-card-top">
         <button type="button" class="kana-big-btn${yClass}" title="発音を聞く">${item.c}</button>
         <div class="kana-meta">
           <div class="kana-meta-row">
             <span class="kana-romaji-tag romaji">${item.r}</span>
+            ${stCount ? `<span class="stroke-badge">${stCount}画</span>` : ""}
             <button type="button" class="speak-mini-btn">🔊 きく</button>
           </div>
           <input type="text" class="yomikata-input" placeholder="よみかた（母国語メモ）" value="${(memos[item.c] || "").replace(/"/g, "&quot;")}" />
@@ -827,22 +833,48 @@ function renderP14Rules(container) {
 
 function renderRenshuPage(page) {
   let testMode = false;
+  let allRevealed = false;
+  let onlyUnlearned = false;
+  const checkedSet = new Set();
+  const LEARNED_KEY = `hiragana_words_learned_p${page.id}_v1`;
+  const loadLearned = () => {
+    try { return new Set(JSON.parse(localStorage.getItem(LEARNED_KEY) || "[]")); } catch { return new Set(); }
+  };
+  const learnedSet = loadLearned();
+  const saveLearned = () => {
+    try { localStorage.setItem(LEARNED_KEY, JSON.stringify([...learnedSet])); } catch {}
+  };
+
+  const padItems = page.words.map((item) => ({
+    char: item.w,
+    icon: item.icon || "🎧",
+    sub: item.r,
+    extra: "音声をきいて手で書いてみましょう",
+    speak: item.w,
+    testMode: true,
+    wide: true,
+  }));
 
   const draw = () => {
     els.pageContainer.innerHTML = `
       ${pageHeaderHTML(page, page.subtitle)}
       <div class="renshu-toolbar">
         <div class="mode-switch">
-          <button type="button" class="mode-btn ${!testMode ? "active" : ""}" id="mode-study">お手本モード</button>
-          <button type="button" class="mode-btn ${testMode ? "active" : ""}" id="mode-test">聞き取りテスト</button>
+          <button type="button" class="mode-btn ${!testMode ? "active" : ""}" id="mode-study">言葉チェック</button>
+          <button type="button" class="mode-btn ${testMode ? "active" : ""}" id="mode-test">聞き取りテスト（手書き）</button>
         </div>
         ${testMode ? `
-          <div style="display:flex; gap:8px; align-items:center;">
-            <button type="button" class="btn primary" id="check-vocab-btn">答え合わせ</button>
-            <button type="button" class="btn" id="reveal-vocab-btn">答えを見る</button>
-            <span id="vocab-score" class="score-badge"></span>
+          <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+            <button type="button" class="btn primary" id="reveal-all-btn">${allRevealed ? "ぜんぶ答えを隠す" : "ぜんぶ答えを見る"}</button>
+            <button type="button" class="btn" id="clear-all-btn">ぜんぶけす</button>
+            <span id="vocab-score" class="score-badge">できた：${checkedSet.size} / ${page.words.length}</span>
           </div>
-        ` : `<span class="page-sub">🔊 ボタンで音声を聞きながら覚えましょう</span>`}
+        ` : `
+          <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+            <button type="button" class="btn ${onlyUnlearned ? "primary" : ""}" id="filter-unlearned-btn">${onlyUnlearned ? "すべて表示" : "まだの言葉だけ"}</button>
+            <span id="learned-score" class="score-badge">おぼえた：${learnedSet.size} / ${page.words.length}</span>
+          </div>
+        `}
       </div>
       <div class="vocab-grid" id="vocab-grid"></div>
     `;
@@ -850,13 +882,29 @@ function renderRenshuPage(page) {
     document.getElementById("mode-study").addEventListener("click", () => { testMode = false; draw(); });
     document.getElementById("mode-test").addEventListener("click", () => { testMode = true; draw(); });
 
-    const grid = document.getElementById("vocab-grid");
-    const testInputs = [];
+    if (!testMode) {
+      document.getElementById("filter-unlearned-btn").addEventListener("click", () => {
+        onlyUnlearned = !onlyUnlearned;
+        draw();
+      });
+    }
 
-    page.words.forEach((item) => {
+    const grid = document.getElementById("vocab-grid");
+    const allCanvases = [];
+    const allReveals = [];
+
+    const updateScore = () => {
+      const sc = document.getElementById("vocab-score");
+      if (sc) sc.textContent = `できた：${checkedSet.size} / ${page.words.length}`;
+    };
+
+    page.words.forEach((item, wordIdx) => {
+      if (!testMode && onlyUnlearned && learnedSet.has(item.w)) return;
       const card = document.createElement("div");
       card.className = "vocab-card";
       if (!testMode) {
+        const isLearned = learnedSet.has(item.w);
+        card.classList.toggle("is-learned", isLearned);
         card.innerHTML = `
           <div class="vocab-top">
             <span class="vocab-icon">${item.icon}</span>
@@ -864,48 +912,122 @@ function renderRenshuPage(page) {
           </div>
           <div class="vocab-word">${item.w}</div>
           <div class="vocab-hint"><span class="romaji">${item.r} ／ </span>${item.mean}</div>
+          <button type="button" class="word-check-btn ${isLearned ? "learned" : ""}">${isLearned ? "☑️ おぼえた！" : "☐ おぼえた"}</button>
         `;
         card.querySelector(".speak-mini-btn").addEventListener("click", () => speakJa(item.w));
+        const chkBtn = card.querySelector(".word-check-btn");
+        chkBtn.addEventListener("click", () => {
+          if (learnedSet.has(item.w)) {
+            learnedSet.delete(item.w);
+            chkBtn.classList.remove("learned");
+            chkBtn.textContent = "☐ おぼえた";
+            card.classList.remove("is-learned");
+          } else {
+            learnedSet.add(item.w);
+            chkBtn.classList.add("learned");
+            chkBtn.textContent = "☑️ おぼえた！";
+            card.classList.add("is-learned");
+          }
+          saveLearned();
+          const lsc = document.getElementById("learned-score");
+          if (lsc) lsc.textContent = `おぼえた：${learnedSet.size} / ${page.words.length}`;
+          if (onlyUnlearned && learnedSet.has(item.w)) card.remove();
+        });
       } else {
+        const isDone = checkedSet.has(wordIdx);
+        card.classList.toggle("checked-ok", isDone);
         card.innerHTML = `
           <div class="vocab-top">
             <span class="vocab-icon">${item.icon}</span>
             <button type="button" class="speak-mini-btn">🔊 きく</button>
           </div>
           <div class="vocab-test-romaji">${item.r}</div>
-          <input type="text" class="vocab-input" placeholder="ひらがなで入力" />
-          <div class="answer-reveal hidden">答え：${item.w}</div>
+          <div class="vocab-write-box">
+            <canvas class="vocab-write-canvas" width="420" height="184"></canvas>
+          </div>
+          <div class="vocab-write-actions">
+            <button type="button" class="vocab-mini-btn primary vocab-open-pad-btn">✍️ 大きく書く</button>
+            <button type="button" class="vocab-mini-btn vocab-clear-inline" data-act="judge">✓ 判定</button>
+            <button type="button" class="vocab-mini-btn vocab-clear-inline" data-act="clear">けす</button>
+            <button type="button" class="vocab-mini-btn" data-act="toggle-ans">答え</button>
+            <button type="button" class="vocab-mini-btn ${isDone ? "done" : ""}" data-act="done">${isDone ? "⭕ できた" : "○ できた"}</button>
+          </div>
+          <div class="vocab-judge-msg hidden"></div>
+          <div class="answer-reveal ${allRevealed ? "" : "hidden"}">${item.w}</div>
         `;
+
         card.querySelector(".speak-mini-btn").addEventListener("click", () => speakJa(item.w));
-        testInputs.push({
-          inp: card.querySelector("input"),
-          ans: item.w,
-          reveal: card.querySelector(".answer-reveal"),
+        const cv = card.querySelector(".vocab-write-canvas");
+        setupTraceCanvas(cv);
+        allCanvases.push(cv);
+
+        const revealEl = card.querySelector(".answer-reveal");
+        const judgeEl = card.querySelector(".vocab-judge-msg");
+        const doneBtn = card.querySelector('[data-act="done"]');
+
+        const markDone = () => {
+          checkedSet.add(wordIdx);
+          doneBtn.classList.add("done");
+          doneBtn.textContent = "⭕ できた";
+          card.classList.add("checked-ok");
+          updateScore();
+        };
+
+        card.querySelector(".vocab-open-pad-btn").addEventListener("click", () => {
+          window.openWritingPad?.(padItems, wordIdx, speakJa, (passedIdx) => {
+            checkedSet.add(passedIdx);
+            updateScore();
+            if (passedIdx === wordIdx) markDone();
+          });
+        });
+
+        card.querySelector('[data-act="judge"]').addEventListener("click", () => {
+          if (!window.evaluateHandwritingCanvas) return;
+          const res = window.evaluateHandwritingCanvas(cv, item.w, true);
+          judgeEl.textContent = res.message;
+          judgeEl.className = `vocab-judge-msg is-${res.status}`;
+          if (res.status !== "empty") {
+            revealEl.classList.remove("hidden");
+            if (res.passed) {
+              markDone();
+              speakJa(item.w);
+            }
+          }
+        });
+
+        card.querySelector('[data-act="clear"]').addEventListener("click", () => {
+          cv.getContext("2d").clearRect(0, 0, cv.width, cv.height);
+          judgeEl.className = "vocab-judge-msg hidden";
+        });
+
+        allReveals.push(revealEl);
+        card.querySelector('[data-act="toggle-ans"]').addEventListener("click", () => {
+          revealEl.classList.toggle("hidden");
+        });
+
+        doneBtn.addEventListener("click", () => {
+          if (checkedSet.has(wordIdx)) {
+            checkedSet.delete(wordIdx);
+            doneBtn.classList.remove("done");
+            doneBtn.textContent = "○ できた";
+            card.classList.remove("checked-ok");
+            updateScore();
+          } else {
+            markDone();
+          }
         });
       }
       grid.appendChild(card);
     });
 
     if (testMode) {
-      document.getElementById("check-vocab-btn").addEventListener("click", () => {
-        let ok = 0;
-        testInputs.forEach(({ inp, ans, reveal }) => {
-          const right = normalizeJa(inp.value) === normalizeJa(ans);
-          inp.classList.toggle("correct", right);
-          inp.classList.toggle("wrong", !right);
-          reveal.classList.toggle("hidden", right);
-          if (right) ok++;
-        });
-        document.getElementById("vocab-score").textContent = `${ok} / ${testInputs.length} 問せいかい！`;
+      document.getElementById("reveal-all-btn").addEventListener("click", () => {
+        allRevealed = !allRevealed;
+        allReveals.forEach((r) => r.classList.toggle("hidden", !allRevealed));
+        document.getElementById("reveal-all-btn").textContent = allRevealed ? "ぜんぶ答えを隠す" : "ぜんぶ答えを見る";
       });
-
-      document.getElementById("reveal-vocab-btn").addEventListener("click", () => {
-        testInputs.forEach(({ inp, ans, reveal }) => {
-          inp.value = ans;
-          inp.classList.add("correct");
-          inp.classList.remove("wrong");
-          reveal.classList.add("hidden");
-        });
+      document.getElementById("clear-all-btn").addEventListener("click", () => {
+        allCanvases.forEach((cv) => cv.getContext("2d").clearRect(0, 0, cv.width, cv.height));
       });
     }
   };
