@@ -118,7 +118,7 @@ async function init() {
     state.book = await res.json();
 
     els.bookTitleLabel.textContent = state.book.title;
-    document.title = `${state.book.title}（HTML版）| 春日部日本語教室`;
+    document.title = `${state.book.title} | デジタルテキスト`;
     els.tocTitle.textContent = `もくじ（全${state.book.pages.length}ページ）`;
 
     renderTOC();
