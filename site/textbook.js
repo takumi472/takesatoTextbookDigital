@@ -113,7 +113,7 @@ async function init() {
   bindGlobalEvents();
 
   try {
-    const res = await fetch(`data/html/${encodeURIComponent(state.bookId)}.json`);
+    const res = await fetch(`data/html/${encodeURIComponent(state.bookId)}.json`, { cache: "no-store" });
     if (!res.ok) throw new Error(`テキストデータ (${state.bookId}) が見つかりません`);
     state.book = await res.json();
 
@@ -299,8 +299,19 @@ function renderKanaChartSection(wrap, sec) {
   const tbody = document.createElement("tbody");
   (sec.rows || []).forEach((row) => {
     const tr = document.createElement("tr");
+    const rowChars = (row.cells || []).filter((c) => c && c.c).map((c) => c.c);
     const th = document.createElement("th");
-    th.textContent = row.label || "";
+    if (rowChars.length > 0) {
+      const rowBtn = document.createElement("button");
+      rowBtn.type = "button";
+      rowBtn.className = "row-speak-btn";
+      rowBtn.title = "この行を順番に聞く";
+      rowBtn.innerHTML = `<span>${row.label || ""}</span><span class="row-spk-ico">🔊</span>`;
+      rowBtn.addEventListener("click", () => speakJa(rowChars.join("、")));
+      th.appendChild(rowBtn);
+    } else {
+      th.textContent = row.label || "";
+    }
     tr.appendChild(th);
     (row.cells || []).forEach((cell) => {
       const td = document.createElement("td");
@@ -308,8 +319,13 @@ function renderKanaChartSection(wrap, sec) {
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "kana-sound-btn";
-        btn.innerHTML = `<span>${cell.c}</span>${cell.r ? `<span class="romaji">${cell.r}</span>` : ""}`;
-        btn.addEventListener("click", () => speakJa(cell.c));
+        btn.setAttribute("aria-label", `${cell.c} の音声を聞く`);
+        btn.innerHTML = `<span class="kana-char">${cell.c}</span><span class="kana-sub-row">${cell.r ? `<span class="romaji">${cell.r}</span>` : ""}<span class="kana-spk-badge" aria-hidden="true">🔊</span></span>`;
+        btn.addEventListener("click", () => {
+          speakJa(cell.c);
+          btn.classList.add("playing");
+          setTimeout(() => btn.classList.remove("playing"), 500);
+        });
         td.appendChild(btn);
       }
       tr.appendChild(td);
@@ -1009,10 +1025,40 @@ function renderImageRefSection(wrap, sec) {
   const pFile = String(sec.pdfPage || 1).padStart(3, "0");
   const fig = document.createElement("div");
   fig.className = "inline-ref-img";
-  fig.innerHTML = `
-    <img src="books/${state.bookId}/pages/p${pFile}.webp" alt="${sec.caption || "図版"}" loading="lazy" />
-    ${sec.caption ? `<p class="inline-ref-caption">${renderRubyHTML(sec.caption)}</p>` : ""}
-  `;
+
+  if (Array.isArray(sec.hotspots) && sec.hotspots.length > 0) {
+    const stage = document.createElement("div");
+    stage.className = "hotspot-stage";
+    stage.innerHTML = `<img src="books/${state.bookId}/pages/p${pFile}.webp" alt="${sec.caption || "図版"}" />`;
+    sec.hotspots.forEach((hs) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "chart-hotspot";
+      btn.style.left = `${hs.x}%`;
+      btn.style.top = `${hs.y}%`;
+      btn.style.width = `${hs.w}%`;
+      btn.style.height = `${hs.h}%`;
+      btn.title = `${hs.c} をきく`;
+      btn.setAttribute("aria-label", `${hs.c} の音声を聞く`);
+      btn.innerHTML = `<span class="hs-spk" aria-hidden="true">🔊</span>`;
+      btn.addEventListener("click", () => {
+        speakJa(hs.speak || hs.c);
+        btn.classList.add("playing");
+        setTimeout(() => btn.classList.remove("playing"), 550);
+      });
+      stage.appendChild(btn);
+    });
+    fig.appendChild(stage);
+  } else {
+    fig.innerHTML = `<img src="books/${state.bookId}/pages/p${pFile}.webp" alt="${sec.caption || "図版"}" loading="lazy" />`;
+  }
+
+  if (sec.caption) {
+    const cap = document.createElement("p");
+    cap.className = "inline-ref-caption";
+    cap.innerHTML = renderRubyHTML(sec.caption);
+    fig.appendChild(cap);
+  }
   wrap.appendChild(fig);
 }
 

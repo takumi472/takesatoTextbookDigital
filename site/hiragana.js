@@ -539,9 +539,17 @@ function renderP1Seasons(page) {
   const tbody = document.getElementById("gojuon-body");
   tableRows.forEach((row) => {
     const tr = document.createElement("tr");
+    const rowChars = row.slice(1).filter(Boolean).map((c) => c[0]);
     const th = document.createElement("th");
-    th.textContent = row[0];
+    const rowBtn = document.createElement("button");
+    rowBtn.type = "button";
+    rowBtn.className = "row-speak-btn";
+    rowBtn.title = "この行を順番に聞く";
+    rowBtn.innerHTML = `<span>${row[0] || "あ"}</span><span class="row-spk-ico">🔊</span>`;
+    rowBtn.addEventListener("click", () => speakJa(rowChars.join("、")));
+    th.appendChild(rowBtn);
     tr.appendChild(th);
+
     for (let i = 1; i <= 5; i++) {
       const td = document.createElement("td");
       const cell = row[i];
@@ -549,8 +557,13 @@ function renderP1Seasons(page) {
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "kana-sound-btn";
-        btn.innerHTML = `<span>${cell[0]}</span><span class="romaji">${cell[1]}</span>`;
-        btn.addEventListener("click", () => speakJa(cell[0]));
+        btn.setAttribute("aria-label", `${cell[0]} の音声を聞く`);
+        btn.innerHTML = `<span class="kana-char">${cell[0]}</span><span class="kana-sub-row"><span class="romaji">${cell[1]}</span><span class="kana-spk-badge" aria-hidden="true">🔊</span></span>`;
+        btn.addEventListener("click", () => {
+          speakJa(cell[0]);
+          btn.classList.add("playing");
+          setTimeout(() => btn.classList.remove("playing"), 500);
+        });
         td.appendChild(btn);
       }
       tr.appendChild(td);

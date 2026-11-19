@@ -436,30 +436,88 @@ body.hide-romaji .romaji {
 
 .kana-sound-btn {
   width: 100%;
-  border: none;
-  background: transparent;
+  border: 1px solid transparent;
+  background: #fcfbf8;
   font-family: var(--font-kyokasho);
   font-size: 26px;
-  padding: 6px 4px;
+  padding: 6px 4px 5px;
   border-radius: 8px;
   cursor: pointer;
   color: var(--ink);
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 3px;
   line-height: 1.15;
+  transition: background 0.14s ease, border-color 0.14s ease, transform 0.1s ease;
 }
 
 .kana-sound-btn:hover {
   background: var(--primary-soft);
+  border-color: var(--primary);
   color: var(--primary);
+}
+
+.kana-sound-btn.playing,
+.kana-sound-btn:active {
+  background: var(--primary);
+  color: #fff;
+  transform: scale(0.96);
+}
+
+.kana-sub-row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
 }
 
 .kana-sound-btn .romaji {
   font-family: var(--font-sans);
   font-size: 11px;
   color: var(--ink-muted);
-  margin-top: 2px;
+}
+
+.kana-spk-badge {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  line-height: 1;
+  padding: 2px 5px;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.kana-sound-btn.playing .romaji,
+.kana-sound-btn.playing .kana-spk-badge {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.row-speak-btn {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--primary);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 4px 2px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.row-speak-btn:hover {
+  background: rgba(29, 91, 121, 0.14);
+}
+
+.row-spk-ico {
+  font-size: 11px;
+  opacity: 0.85;
 }
 
 /* ==================== CHARACTER WRITING PRACTICE ==================== */
